@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://d4m5452pvqdqn"]
+
+[ext_resource type="Script" uid="uid://cifunx2awmcwd" path="res://Escenas/menu_principal.gd" id="1_20qv4"]
+[ext_resource type="Texture2D" uid="uid://cwxi7emfwm50j" path="res://Assets/Fondo/Fondo.png" id="2_iq5l4"]
+[ext_resource type="AudioStream" uid="uid://gliivucyj3sw" path="res://Sounds/Intro.mp3" id="3_i4iwo"]
+
+[node name="Control" type="Control" unique_id=21823068]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_20qv4")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=593509091]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = -58.0
+offset_right = 1224.0
+offset_bottom = 670.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_iq5l4")
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=642187128]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 350.0
+offset_top = 152.0
+offset_right = 727.0
+offset_bottom = 419.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="BotonJugar" type="Button" parent="VBoxContainer" unique_id=420339347]
+layout_mode = 2
+text = "Jugar"
+
+[node name="BotonConsejos" type="Button" parent="VBoxContainer" unique_id=772095953]
+layout_mode = 2
+text = "Consejos"
+
+[node name="BotonAsistencia" type="Button" parent="VBoxContainer" unique_id=385089223]
+layout_mode = 2
+text = "Asistencia"
+
+[node name="Panel" type="Panel" parent="." unique_id=2098285386]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 206.0
+offset_top = 134.0
+offset_right = 837.0
+offset_bottom = 428.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel" unique_id=906237171]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BotonCerrarInf" type="Button" parent="Panel" unique_id=1171688181]
+layout_mode = 0
+offset_right = 74.0
+offset_bottom = 24.0
+text = "Cerrar
+"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1369519176]
+stream = ExtResource("3_i4iwo")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/BotonJugar" to="." method="_on_boton_jugar_pressed"]
+[connection signal="pressed" from="VBoxContainer/BotonConsejos" to="." method="_on_boton_consejos_pressed"]
+[connection signal="pressed" from="VBoxContainer/BotonAsistencia" to="." method="_on_boton_asistencia_pressed"]
+[connection signal="pressed" from="Panel/BotonCerrarInf" to="." method="_on_boton_cerrar_inf_pressed"]

@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cp4hpl1gnw3d0" path="res://Assets/Character/Run.png" id="6_rbs6h"]
 [ext_resource type="Texture2D" uid="uid://xxomtinl7wad" path="res://Assets/Character/jump2.png" id="7_yeyq8"]
 [ext_resource type="PackedScene" uid="uid://vu11olt5vwx1" path="res://infeccion.tscn" id="10_yeyq8"]
+[ext_resource type="AudioStream" uid="uid://cvrbg6ejjcrsc" path="res://Sounds/battle.mp3" id="11_0vnxj"]
 [ext_resource type="Script" uid="uid://bp8ckf3rtylyk" path="res://Escenas/node_2d.gd" id="13_g65a0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hid1b"]
@@ -156,27 +157,32 @@ texto_label = NodePath("../CanvasLayer/ModalConsejo/TextoConsejo")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1459197878]
 
 [node name="ModalConsejo" type="Panel" parent="CanvasLayer" unique_id=702169180]
-offset_left = 394.0
-offset_top = 448.0
-offset_right = 792.0
+offset_left = 336.0
+offset_top = 402.0
+offset_right = 874.0
 offset_bottom = 558.0
 
 [node name="TextoConsejo" type="Label" parent="CanvasLayer/ModalConsejo" unique_id=1132663103]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 7.0
-offset_right = 391.0
-offset_bottom = 41.0
-text = "¡Victoria!"
+offset_left = 71.0
+offset_top = 13.0
+offset_right = 452.0
+offset_bottom = 47.0
+text = "Texto"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="BotonReiniciar" type="Button" parent="CanvasLayer/ModalConsejo" unique_id=2098007065]
 layout_mode = 0
-offset_left = 162.0
-offset_top = 72.0
-offset_right = 238.0
-offset_bottom = 103.0
-text = "Reiniciar"
+offset_left = 229.0
+offset_top = 108.0
+offset_right = 305.0
+offset_bottom = 139.0
+text = "Botón"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=358077123]
+stream = ExtResource("11_0vnxj")
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/ModalConsejo/BotonReiniciar" to="Node2D" method="_on_boton_reiniciar_pressed"]
