@@ -11,6 +11,7 @@ var bullet_scene = preload("res://Escenas/bullet.tscn")
 # --- REFERENCIAS ---
 @onready var sprite = $AnimatedSprite2D 
 @onready var spawn_point = $AnimatedSprite2D/SpawnPoint
+
 # --- ESTADOS ---
 var can_shoot = true
 var ultima_direccion = 1 # 1 = Derecha, -1 = Izquierda
@@ -25,12 +26,12 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravedad * delta
 
-	# 2. Saltar
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	# 2. Saltar (Usando tu acción personalizada)
+	if Input.is_action_just_pressed("saltar") and is_on_floor():
 		velocity.y = salto
 
-	# 3. Movimiento Lateral
-	var input_dir = Input.get_axis("ui_left", "ui_right")
+	# 3. Movimiento Lateral (Usando mover_izq y mover_der)
+	var input_dir = Input.get_axis("mover_izq", "mover_der")
 	
 	if input_dir != 0:
 		velocity.x = input_dir * velocidad
@@ -40,13 +41,13 @@ func _physics_process(delta):
 		ultima_direccion = sign(input_dir)
 		
 		# MOVER EL PUNTO DE DISPARO AL FRENTE
-		# Esto evita que la bala salga por la espalda
 		spawn_point.position.x = abs(spawn_point.position.x) * ultima_direccion
 	else:
 		velocity.x = move_toward(velocity.x, 0, velocidad)
 
-	# 4. Lógica de Disparo (CTRL)
-	if Input.is_physical_key_pressed(KEY_CTRL):
+	# 4. Lógica de Disparo (Usando tu acción "disparar")
+	# Esto permite que funcione con CTRL y con el botón táctil del APK
+	if Input.is_action_pressed("disparar"):
 		if can_shoot:
 			disparar()
 			can_shoot = false 
@@ -63,11 +64,10 @@ func disparar():
 	# Colocarla en la posición global del SpawnPoint
 	bala.global_position = spawn_point.global_position
 	
-	# AGREGAR AL MUNDO PRIMERO (Esto es vital en Godot 4)
+	# AGREGAR AL MUNDO PRIMERO
 	get_tree().root.add_child(bala)
 	
 	# ENVIAR LA DIRECCIÓN A LA BALA
-	# Usamos el método seguro que pusimos en el script de la bala
 	if bala.has_method("establecer_direccion"):
 		bala.establecer_direccion(ultima_direccion)
 	elif "direccion" in bala:

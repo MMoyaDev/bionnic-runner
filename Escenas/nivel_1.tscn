@@ -10,7 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://xxomtinl7wad" path="res://Assets/Character/jump2.png" id="7_yeyq8"]
 [ext_resource type="PackedScene" uid="uid://vu11olt5vwx1" path="res://infeccion.tscn" id="10_yeyq8"]
 [ext_resource type="AudioStream" uid="uid://cvrbg6ejjcrsc" path="res://Sounds/battle.mp3" id="11_0vnxj"]
+[ext_resource type="Texture2D" uid="uid://cyfwtpbh82vlf" path="res://Buttons/left.png" id="12_vkvrq"]
+[ext_resource type="Texture2D" uid="uid://fj74x7amai6e" path="res://Buttons/right.png" id="13_8l7re"]
 [ext_resource type="Script" uid="uid://bp8ckf3rtylyk" path="res://Escenas/node_2d.gd" id="13_g65a0"]
+[ext_resource type="Texture2D" uid="uid://uk54bu45qt0a" path="res://Buttons/button.png" id="14_pg5ir"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hid1b"]
 size = Vector2(1024.0001, 60.800034)
@@ -184,5 +187,27 @@ text = "Botón"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=358077123]
 stream = ExtResource("11_0vnxj")
 autoplay = true
+
+[node name="ControlesMoviles" type="CanvasLayer" parent="." unique_id=603685263]
+
+[node name="BtnIquierda" type="TouchScreenButton" parent="ControlesMoviles" unique_id=1046816124]
+position = Vector2(98, 484)
+texture_normal = ExtResource("12_vkvrq")
+action = "mover_izq"
+
+[node name="BtnDerecha" type="TouchScreenButton" parent="ControlesMoviles" unique_id=1054868422]
+position = Vector2(213, 484)
+texture_normal = ExtResource("13_8l7re")
+action = "mover_der"
+
+[node name="BtnBrincar" type="TouchScreenButton" parent="ControlesMoviles" unique_id=1024876330]
+position = Vector2(1009, 488)
+texture_normal = ExtResource("14_pg5ir")
+action = "saltar"
+
+[node name="BtnDisparo" type="TouchScreenButton" parent="ControlesMoviles" unique_id=377124194]
+position = Vector2(883, 489)
+texture_normal = ExtResource("14_pg5ir")
+action = "disparar"
 
 [connection signal="pressed" from="CanvasLayer/ModalConsejo/BotonReiniciar" to="Node2D" method="_on_boton_reiniciar_pressed"]
