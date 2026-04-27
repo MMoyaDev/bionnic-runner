@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bhurwq7lduo81"]
+
+[ext_resource type="Script" uid="uid://cu4e1oudtkfew" path="res://Escenas/bullet.gd" id="1_e7s4r"]
+[ext_resource type="Texture2D" uid="uid://bjps42ags44lb" path="res://Assets/Character/bullet.png" id="1_tn52c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7s4r"]
+size = Vector2(14.5, 10.5)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=601552085]
+script = ExtResource("1_e7s4r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1309233771]
+position = Vector2(2.5, 4.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_e7s4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=1719423251]
+scale = Vector2(2, 2)
+texture = ExtResource("1_tn52c")

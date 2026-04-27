@@ -139,44 +139,28 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_g65a0")
 animation = &"Damage"
 
-[node name="SpawnPoint" type="Node2D" parent="Character/AnimatedSprite2D" unique_id=1935482620]
-position = Vector2(24.5, -2)
-scale = Vector2(0.5, 0.5)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character" unique_id=387198315]
 position = Vector2(596.75, 506.5)
 shape = SubResource("RectangleShape2D_llk6u")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=431200661 node_paths=PackedStringArray("modal_panel", "texto_label")]
+[node name="SpawnPoint" type="Node2D" parent="Character" unique_id=1935482620]
+position = Vector2(641, 505)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=431200661]
 script = ExtResource("13_g65a0")
 enemigo_escena = ExtResource("10_yeyq8")
-modal_panel = NodePath("../CanvasLayer/ModalConsejo")
-texto_label = NodePath("../CanvasLayer/ModalConsejo/TextoConsejo")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1459197878]
 
 [node name="ModalConsejo" type="Panel" parent="CanvasLayer" unique_id=702169180]
-offset_left = 394.0
-offset_top = 448.0
-offset_right = 792.0
-offset_bottom = 558.0
+visible = false
+offset_left = 419.0
+offset_top = 181.0
+offset_right = 752.0
+offset_bottom = 499.0
 
 [node name="TextoConsejo" type="Label" parent="CanvasLayer/ModalConsejo" unique_id=1132663103]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 7.0
-offset_right = 391.0
-offset_bottom = 41.0
+offset_right = 40.0
+offset_bottom = 23.0
 text = "¡Victoria!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BotonReiniciar" type="Button" parent="CanvasLayer/ModalConsejo" unique_id=2098007065]
-layout_mode = 0
-offset_left = 162.0
-offset_top = 72.0
-offset_right = 238.0
-offset_bottom = 103.0
-text = "Reiniciar"
-
-[connection signal="pressed" from="CanvasLayer/ModalConsejo/BotonReiniciar" to="Node2D" method="_on_boton_reiniciar_pressed"]

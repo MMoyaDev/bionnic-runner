@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://vu11olt5vwx1"]
+
+[ext_resource type="Script" uid="uid://cfbei4qrhjjrx" path="res://Escenas/infeccion.gd" id="1_15uym"]
+[ext_resource type="Texture2D" uid="uid://cv14ewcucphi3" path="res://Assets/explosion.png" id="2_7l5qj"]
+[ext_resource type="Texture2D" uid="uid://ha3t8xixn23g" path="res://Assets/obstaculo.png" id="3_totag"]
+[ext_resource type="Texture2D" uid="uid://c0yql8t3n6exi" path="res://Assets/obstaculo_chico.png" id="4_dskqt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8l7re"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_totag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dskqt")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7l5qj")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pg5ir"]
+radius = 30.0
+
+[node name="Infeccion" type="CharacterBody2D" unique_id=1547936389]
+script = ExtResource("1_15uym")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1553989850]
+sprite_frames = SubResource("SpriteFrames_8l7re")
+animation = &"dead"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1060578820]
+shape = SubResource("CircleShape2D_pg5ir")
